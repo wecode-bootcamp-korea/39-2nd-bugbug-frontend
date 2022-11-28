@@ -1,4 +1,3 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
