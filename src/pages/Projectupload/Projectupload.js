@@ -1,5 +1,141 @@
 import React from 'react';
+import styled from 'styled-components';
+import { PROJECT_UPLAOD_LIST } from './ProjectUploadListData';
 
 export default function Projectupload() {
-  return <div>Projectupload</div>;
+  return (
+    <Container>
+      <Inner>
+        <Title>프로젝트 데이터 입력하기</Title>
+        <DataArea>
+          <SubTitle>프로젝트 개요</SubTitle>
+          <DataListArea>
+            {PROJECT_UPLAOD_LIST.map(list => {
+              return (
+                <DataList key={list.id}>
+                  <ListExplan>{list.explan}</ListExplan>
+                  <FormBox>
+                    {list.type !== 'radio' && (
+                      <Input type={list.type} id={list.name} />
+                    )}
+                    {list.type === 'file' && <BtnUpload>사진 업로드</BtnUpload>}
+                    {list.type === 'radio' &&
+                      list.choice?.map(elem => {
+                        return (
+                          <RadioBox key={elem.id}>
+                            <Input
+                              type="radio"
+                              name="category"
+                              id={elem.name}
+                            />
+                            <Label htmlFor={elem.name}>{elem.title}</Label>
+                          </RadioBox>
+                        );
+                      })}
+                  </FormBox>
+                </DataList>
+              );
+            })}
+          </DataListArea>
+          <BtnSubmit>프로젝트 올리기</BtnSubmit>
+        </DataArea>
+      </Inner>
+    </Container>
+  );
 }
+
+const Container = styled.div`
+  padding: 50px 0;
+  background: #f5f5f5;
+  input[type='text'],
+  input[type='number'] {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 0;
+    border-bottom: 1px solid black;
+    outline: 0;
+  }
+  input[type='date'] {
+    display: inline-block;
+    width: 300px;
+    height: 40px;
+    border: 0;
+    border-bottom: 1px solid #000;
+  }
+  button {
+    background-color: transparent;
+    cursor: pointer;
+  }
+`;
+const Inner = styled.div`
+  margin: 0 auto;
+  width: 1160px;
+`;
+const Title = styled.h2`
+  font-size: 36px;
+  font-weight: bold;
+`;
+const SubTitle = styled.h3`
+  font-size: 18px;
+  font-weight: bold;
+`;
+const DataArea = styled.div`
+  margin-top: 40px;
+`;
+const DataListArea = styled.ul`
+  margin-top: 20px;
+  border-radius: 4px;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+  background: #fff;
+`;
+const DataList = styled.li`
+  padding: 20px 20px;
+  & + li {
+    border-top: 1px solid #e5e5e5;
+  }
+`;
+const FormBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+`;
+const ListExplan = styled.p`
+  &:before {
+    content: '*';
+    margin-right: 4px;
+  }
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(248, 100, 83);
+`;
+const UploadBox = styled.div``;
+const RadioBox = styled.div`
+  margin-right: 8px;
+`;
+const Input = styled.input`
+  padding: 0 10px;
+`;
+const Label = styled.label``;
+const BtnUpload = styled.button`
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid rgb(248, 100, 83);
+  border-radius: 4px;
+  background-color: rgb(248, 100, 83) !important;
+  color: #fff;
+  font-weight: bold;
+`;
+const BtnSubmit = styled.button`
+  margin-top: 20px;
+  padding: 0 10px;
+  width: 100%;
+  height: 60px;
+  border: 1px solid rgb(248, 100, 83);
+  border-radius: 4px;
+  background-color: rgb(248, 100, 83) !important;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+`;
