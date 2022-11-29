@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './routerLayout/MainLayout';
 import Main from './pages/Main/Main';
 import Signin from './pages/Signin/Signin';
+import Kakao from './pages/Signin/Kakao';
 import Signup from './pages/Signup/Signup';
 import Productdetail from './pages/Productdetail/Productdetail';
 import Payment from './pages/Payment/Payment';
@@ -20,6 +21,7 @@ export default function Router() {
         </Route>
         <Route path="/payment" element={<Payment />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/user/signin" element={<Kakao />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/productdetail" element={<Productdetail />} />
         <Route path="/payment" element={<Payment />} />
