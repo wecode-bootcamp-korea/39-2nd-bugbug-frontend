@@ -1,8 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function Header() {
+  // 로그인 상태
+  const isLogin = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  function logout() {
+    localStorage.removeItem('token');
+    navigate('/');
+  }
+
   return (
     <HeaderWrap>
       <Inner>
@@ -11,12 +20,28 @@ export default function Header() {
         </LogoLink>
 
         <div>
-          <BtnUpload className="btn upload">
-            <span>프로젝트 올리기 시작하기</span>
-          </BtnUpload>
-          <BtnLoginStatus class="btn login-status">
-            <span>회원가입/로그인</span>
-          </BtnLoginStatus>
+          {isLogin && (
+            <>
+              <BtnUpload
+                onClick={() => {
+                  navigate('/Projectupload');
+                }}
+              >
+                <span>프로젝트 올리기 시작하기</span>
+              </BtnUpload>
+              <BtnLoginStatus>
+                <span>유저네임</span>
+              </BtnLoginStatus>
+              <BtnLoginStatus onClick={logout}>
+                <span>로그아웃</span>
+              </BtnLoginStatus>
+            </>
+          )}
+          {!isLogin && (
+            <BtnLoginStatus>
+              <span>회원가입/로그인</span>
+            </BtnLoginStatus>
+          )}
         </div>
       </Inner>
     </HeaderWrap>
