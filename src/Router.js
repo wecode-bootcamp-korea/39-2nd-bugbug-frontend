@@ -7,6 +7,7 @@ import Signup from './pages/Signup/Signup';
 import Productdetail from './pages/Productdetail/Productdetail';
 import Payment from './pages/Payment/Payment';
 import Projectupload from './pages/Projectupload/Projectupload';
+import Paymentsuccess from './pages/Payment/PaymentComponents/PaymentPage/PaymentScreen/Paymentsuccess';
 
 export default function Router() {
   return (
@@ -20,6 +21,10 @@ export default function Router() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/productdetail" element={<Productdetail />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/projectupload" element={<Projectupload />} />
+        <Route path="/paymentsuccess" element={<Paymentsuccess />} />
       </Routes>
     </BrowserRouter>
   );
