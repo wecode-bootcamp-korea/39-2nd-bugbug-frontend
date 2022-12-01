@@ -1,8 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PROJECT_UPLAOD_LIST } from './ProjectUploadListData';
 
 export default function Projectupload() {
+  const [imgPreveiw, setImgPreveiw] = useState(null);
+  const [fileUploadData, setFileUploadData] = useState({});
+  const [targetValue, setTargetValue] = useState({
+    title: '',
+    summary: '',
+    category: '',
+    story: '',
+    price: '',
+    gift: '',
+    gift_information: '',
+    date_start: '',
+    date_end: '',
+  });
+
+  function inputValueBring(e) {
+    const { name, value, id, files } = e.target;
+    setTargetValue({ ...targetValue, [name]: value });
+
+    if (name === 'category') {
+      setTargetValue({ ...targetValue, [name]: `${id}` });
+    }
+
+    if (name === 'file') {
+      setFileUploadData(files[0]);
+    }
+  }
+
+  function projectUploadDataTransfer() {
+    const formData = new FormData();
+    formData.append('file', fileUploadData);
+    formData.append('targetValue', JSON.stringify(targetValue));
+
+    const accessToken = localStorage.getItem('token');
+
+    fetch(`http://10.58.52.97:3000/projects`, {
+      method: 'POST',
+      headers: {
+        //'Content-Type': 'application/json',
+        //'Content-Type': 'multipart/form-data',
+
+        // 토큰 전달
+        authorization: accessToken,
+      },
+      body: formData,
+    });
+  }
+
+  // 이미지 미리보기
+  function imgPreview() {
+    setImgPreveiw(URL.createObjectURL(fileUploadData));
+  }
+
   return (
     <Container>
       <Inner>
@@ -16,9 +68,25 @@ export default function Projectupload() {
                   <ListExplan>{list.explan}</ListExplan>
                   <FormBox>
                     {list.type !== 'radio' && (
-                      <Input type={list.type} id={list.name} />
+                      <Input
+                        type={list.type}
+                        id={list.name}
+                        name={list.name}
+                        onChange={e => {
+                          inputValueBring(e);
+                        }}
+                      />
                     )}
-                    {list.type === 'file' && <BtnUpload>사진 업로드</BtnUpload>}
+                    {list.type === 'file' && (
+                      <>
+                        <BtnUpload onClick={imgPreview}>미리보기</BtnUpload>
+                        {imgPreveiw && (
+                          <ImgArea>
+                            <img src={imgPreveiw} alt="img-preview" />
+                          </ImgArea>
+                        )}
+                      </>
+                    )}
                     {list.type === 'radio' &&
                       list.choice?.map(elem => {
                         return (
@@ -26,7 +94,10 @@ export default function Projectupload() {
                             <Input
                               type="radio"
                               name="category"
-                              id={elem.name}
+                              id={elem.id}
+                              onClick={e => {
+                                inputValueBring(e);
+                              }}
                             />
                             <Label htmlFor={elem.name}>{elem.title}</Label>
                           </RadioBox>
@@ -37,7 +108,9 @@ export default function Projectupload() {
               );
             })}
           </DataListArea>
-          <BtnSubmit>프로젝트 올리기</BtnSubmit>
+          <BtnSubmit onClick={projectUploadDataTransfer}>
+            프로젝트 올리기
+          </BtnSubmit>
         </DataArea>
       </Inner>
     </Container>
@@ -98,8 +171,17 @@ const DataList = styled.li`
 `;
 const FormBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-top: 20px;
+`;
+const ImgArea = styled.div`
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  img {
+    width: 300px;
+  }
 `;
 const ListExplan = styled.p`
   &:before {
