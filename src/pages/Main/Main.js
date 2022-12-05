@@ -1,38 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductCard from './components/ProductCard/ProductCard';
 
 export default function Main() {
   const [productInfo, setProductInfo] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    fetch('/data/productInfo.json')
+  const setSortParams = () => {
+    searchParams.set('type', '1');
+    setSearchParams(searchParams);
+  };
+
+  function filterHandle(category) {
+    console.log(category);
+    fetch(`http://10.58.52.231:3000/projects?type=${category}`, {
+      method: 'GET',
+    })
       .then(response => response.json())
       .then(result => setProductInfo(result));
-  }, []);
+  }
 
   return (
     <MainContainer>
       <NavWrap>
         <NavItemWrap>
-          <a href="#">
+          <button onClick={setSortParams}>setSortParams</button>
+          <Link to="/">
             <NavItem>
               <img src="./images/main/icon-all.png" />
               전체
             </NavItem>
-          </a>
-          <a href="#">
+          </Link>
+          <Link
+            to="/"
+            onClick={() => {
+              filterHandle(1);
+            }}
+          >
             <NavItem>
               <img src="./images/main/icon-tech.png" />
               테크 · 가전
             </NavItem>
-          </a>
-          <a href="#">
+          </Link>
+          <Link
+            to="/"
+            onClick={() => {
+              filterHandle(2);
+            }}
+          >
             <NavItem>
               <img src="./images/main/icon-other.png" />
               잡화
             </NavItem>
-          </a>
+          </Link>
         </NavItemWrap>
       </NavWrap>
       <MainWrap>
