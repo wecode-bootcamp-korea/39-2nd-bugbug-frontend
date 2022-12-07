@@ -16,10 +16,10 @@ export default function Router() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Main />} />
-          <Route path="/productdetail" element={<Productdetail />} />
+          <Route path="/productdetail/:id" element={<Productdetail />} />
           <Route path="/projectupload" element={<Projectupload />} />
         </Route>
-        <Route path="/payment" element={<Payment />} />
+        <Route path="/payment/:id" element={<Payment />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/user/signin" element={<Kakao />} />
         <Route path="/signup" element={<Signup />} />
