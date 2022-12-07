@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function Header() {
   // 로그인 상태
-  const isLogin = localStorage.getItem('token');
+  const isLogin = JSON.parse(localStorage.getItem('token'));
   const navigate = useNavigate();
+
+  const [loginId, setLoginId] = useState('');
 
   function logout() {
     localStorage.removeItem('token');
     navigate('/');
   }
+
+  useEffect(() => {
+    if (isLogin) {
+      fetch(`http://10.58.52.97:3000/user/info`, {
+        headers: {
+          authorization: isLogin,
+        },
+      })
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          setLoginId(result);
+        });
+    }
+  }, []);
 
   return (
     <HeaderWrap>
@@ -30,7 +47,7 @@ export default function Header() {
                 <span>프로젝트 올리기 시작하기</span>
               </BtnUpload>
               <BtnLoginStatus>
-                <span>유저네임</span>
+                <span>{loginId.nickname}</span>
               </BtnLoginStatus>
               <BtnLoginStatus onClick={logout}>
                 <span>로그아웃</span>
@@ -38,7 +55,11 @@ export default function Header() {
             </>
           )}
           {!isLogin && (
-            <BtnLoginStatus>
+            <BtnLoginStatus
+              onClick={() => {
+                navigate('/signin');
+              }}
+            >
               <span>회원가입/로그인</span>
             </BtnLoginStatus>
           )}

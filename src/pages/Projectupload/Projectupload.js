@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PROJECT_UPLAOD_LIST } from './ProjectUploadListData';
+import { useNavigate } from 'react-router-dom';
 
 export default function Projectupload() {
   const [imgPreveiw, setImgPreveiw] = useState(null);
@@ -16,6 +17,8 @@ export default function Projectupload() {
     date_start: '',
     date_end: '',
   });
+
+  const navigate = useNavigate();
 
   function inputValueBring(e) {
     const { name, value, id, files } = e.target;
@@ -36,6 +39,7 @@ export default function Projectupload() {
     formData.append('targetValue', JSON.stringify(targetValue));
 
     const accessToken = localStorage.getItem('token');
+    console.log('test');
 
     fetch(`http://10.58.52.97:3000/projects`, {
       method: 'POST',
@@ -44,10 +48,12 @@ export default function Projectupload() {
         //'Content-Type': 'multipart/form-data',
 
         // 토큰 전달
-        authorization: accessToken,
+        authorization: JSON.parse(accessToken),
       },
       body: formData,
     });
+
+    navigate('/');
   }
 
   // 이미지 미리보기
