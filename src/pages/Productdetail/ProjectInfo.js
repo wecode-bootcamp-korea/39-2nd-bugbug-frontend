@@ -1,40 +1,55 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function ProductInfo() {
   const [productInfo, setProductInfo] = useState([]);
 
   useEffect(() => {
-    fetch('/data/productInfo.json')
+    fetch(`http://10.58.52.97:3000/projects/1`)
       .then(response => response.json())
-      .then(result => setProductInfo(result[0]));
+      .then(result => setProductInfo(result));
   }, []);
 
-  const { productId, fundingPrice, gift } = productInfo;
+  const { id, story, gift, gift_information, creator_nickname, explanation } =
+    productInfo;
 
   if (productInfo.length === 0) return null;
 
+  const sendItem = id => {
+    fetch(`http://10.58.52.219:3000/projects/1`, {
+      method: 'POST',
+      headers: {
+        'content-Type': 'application/json;charset=utf-8',
+        Authorization: localStorage.getItem('accessToken'),
+      },
+      body: JSON.stringify({ id: id }),
+    }).then(response => response.json());
+  };
+
+  console.log(productInfo);
   return (
-    <ProjectContents key={productId}>
+    <ProjectContents key={id}>
       <ProjectContentsWrap>
         <MainColumn>
           <p>| 프로젝트 소개</p>
-          <ProjectDesc>
-            <span>내용샬라샬라라라라</span>
-          </ProjectDesc>
+          <ProjectDesc>{story}</ProjectDesc>
         </MainColumn>
         <SubColumn>
           <CreatorCard>
             <p>창작자 소개</p>
-            <CreatorName>취향더쿠</CreatorName>
-            <CreatorDesc>세상의 모든 창작자를 위한 브랜드</CreatorDesc>
+            <CreatorName>{creator_nickname}</CreatorName>
+            <CreatorDesc>{explanation}</CreatorDesc>
           </CreatorCard>
           <p>선물 선택</p>
           <GiftCard>
-            <GiftPrice>{fundingPrice.toLocaleString()}원 +</GiftPrice>
-            <GiftDesc>{gift}</GiftDesc>
-            {/* <Link key={id} to={`/detail/${id}`}> */}
-            <PrimaryBtn>{fundingPrice.toLocaleString()}원 후원하기</PrimaryBtn>
+            <GiftPrice>{Math.floor(gift).toLocaleString()}원 +</GiftPrice>
+            <GiftDesc>{gift_information}</GiftDesc>
+            <Link to={`/payment/${id}`}>
+              <PrimaryBtn onClick={sendItem(productInfo.id)}>
+                {Math.floor(gift).toLocaleString()}원 후원하기
+              </PrimaryBtn>
+            </Link>
           </GiftCard>
         </SubColumn>
       </ProjectContentsWrap>

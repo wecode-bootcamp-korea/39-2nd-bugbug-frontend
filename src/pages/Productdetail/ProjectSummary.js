@@ -1,48 +1,66 @@
 import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function ProjectSummary() {
   const [productInfo, setProductInfo] = useState([]);
 
   useEffect(() => {
-    fetch('/data/productInfo.json')
+    fetch(`http://10.58.52.97:3000/projects/1`)
       .then(response => response.json())
-      .then(result => setProductInfo(result[0]));
+      .then(result => setProductInfo(result));
   }, []);
 
   const {
-    productId,
+    id,
     type,
-    projectTitle,
-    img,
-    allPrice,
-    dday,
-    sponsor,
-    targetAmont,
+    name,
+    img_url,
+    gathered_amount,
+    gathered_People,
+    target_amount,
     opening,
     deadline,
+    amountPercent,
   } = productInfo;
 
   if (productInfo.length === 0) return null;
+  console.log(productInfo);
+  const today = new Date();
 
-  const percent = Math.floor((allPrice / targetAmont) * 100);
+  let todayYear = today.getFullYear();
+  let todayMonth = today.getMonth() + 1;
+  let todayDate = today.getDate();
+  let todayString = todayYear + '-' + todayMonth + '-' + todayDate;
+
+  const getDateDiff = (d1, d2) => {
+    const date1 = new Date(d1);
+    const date2 = new Date(d2);
+
+    const diffDate = date1.getTime() - date2.getTime();
+
+    return Math.abs(diffDate / (1000 * 60 * 60 * 24));
+  };
+
+  const scrollBottom = () => {
+    window.scrollTo(0, document.body.scrollHeight);
+  };
 
   return (
-    <ProjectInfo key={productId}>
+    <ProjectInfo key={id}>
       <ProjectInfoTop>
         <TopSection>
           <TopSectionWrap>
             <TypeBox>
               <span>
-                <a herf="http://naver.com">{type}</a>
+                <Link to="/">{type}</Link>
               </span>
             </TypeBox>
-            <ProjectTitle>{projectTitle}</ProjectTitle>
+            <ProjectTitle>{name}</ProjectTitle>
           </TopSectionWrap>
         </TopSection>
         <LeftSection>
-          <img src={img} />
+          <img src={img_url} />
         </LeftSection>
         <RightSection>
           <FundingStatus>
@@ -50,17 +68,17 @@ export default function ProjectSummary() {
               <StatusTitle>모인금액</StatusTitle>
               <StatusValue>
                 <FundingAllPrice>
-                  {allPrice.toLocaleString()}
+                  {gathered_amount.toLocaleString()}
                   <span>원</span>
                 </FundingAllPrice>
-                <FundingRate>{percent}%</FundingRate>
+                <FundingRate>{amountPercent}%</FundingRate>
               </StatusValue>
             </FundingStatusWrap>
             <FundingStatusWrap>
               <StatusTitle>남은시간</StatusTitle>
               <StatusValue>
                 <FundingAllPrice>
-                  {dday}
+                  {getDateDiff(todayString, deadline)}
                   <span>일</span>
                 </FundingAllPrice>
               </StatusValue>
@@ -69,7 +87,7 @@ export default function ProjectSummary() {
               <StatusTitle>후원자</StatusTitle>
               <StatusValue>
                 <FundingAllPrice>
-                  {sponsor.toLocaleString()}
+                  {gathered_People.toLocaleString()}
                   <span>명</span>
                 </FundingAllPrice>
               </StatusValue>
@@ -80,31 +98,31 @@ export default function ProjectSummary() {
               <FundingInfoItem>
                 <FundingInfoTitle>목표금액</FundingInfoTitle>
                 <FundingInfoDesc>
-                  {targetAmont.toLocaleString()}원
+                  {Math.floor(target_amount).toLocaleString()}원
                 </FundingInfoDesc>
               </FundingInfoItem>
               <FundingInfoItem>
                 <FundingInfoTitle>펀딩 기간</FundingInfoTitle>
                 <FundingInfoDesc>
-                  {opening} ~ {deadline}
+                  {opening.substring(0, 10)} ~ {deadline.substring(0, 10)}
                   <Dday>
-                    <span>{dday}일 남음</span>
+                    <span>{getDateDiff(todayString, deadline)}일</span>
                   </Dday>
                 </FundingInfoDesc>
               </FundingInfoItem>
               <FundingInfoItem>
                 <FundingInfoTitle>결제</FundingInfoTitle>
                 <FundingInfoDesc>
-                  목표금액 달성시 {deadline.toLocaleString()}에 결제 진행
+                  목표금액 달성시 {deadline.substring(0, 10)}에 결제 진행
                 </FundingInfoDesc>
               </FundingInfoItem>
             </FundingInfoWrap>
           </FundingInfo>
           <FundingBtns>
             <FundingBtnWrap>
-              {/* <Link to="#"> */}
-              <PrimaryBtn>이 프로젝트 후원하기</PrimaryBtn>
-              {/* </Link> */}
+              <PrimaryBtn onClick={scrollBottom}>
+                이 프로젝트 후원하기{' '}
+              </PrimaryBtn>
             </FundingBtnWrap>
           </FundingBtns>
         </RightSection>
