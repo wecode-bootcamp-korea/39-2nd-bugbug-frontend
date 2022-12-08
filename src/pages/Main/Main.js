@@ -3,23 +3,45 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductCard from './components/ProductCard/ProductCard';
 import { BASE_URL } from '../../config';
+import { useEffect } from 'react';
 
 export default function Main() {
   const [productInfo, setProductInfo] = useState([]);
 
+  useEffect(filterHandle, []);
+
   function filterHandle(category) {
-    fetch(`${BASE_URL}/projects?type=${category}`, {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(result => setProductInfo(result));
+    if (category) {
+      fetch(`${BASE_URL}/projects?type=${category}`, {
+        method: 'GET',
+      })
+        .then(response => response.json())
+        .then(result => setProductInfo(result));
+    } else if (category === undefined) {
+      fetch(`${BASE_URL}/projects`, {
+        method: 'GET',
+      })
+        .then(response => response.json())
+        .then(result => setProductInfo(result));
+    }
+
+    // fetch(`${BASE_URL}/projects?type=${category}`, {
+    //   method: 'GET',
+    // })
+    //   .then(response => response.json())
+    //   .then(result => setProductInfo(result));
   }
 
   return (
     <MainContainer>
       <NavWrap>
         <NavItemWrap>
-          <Link to="/">
+          <Link
+            to="/"
+            onClick={() => {
+              filterHandle();
+            }}
+          >
             <NavItem>
               <img src="./images/main/icon-all.png" />
               전체
