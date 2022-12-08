@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { BASE_URL } from '../../../../../config';
 
 const GiftinforComponent = () => {
   const [productList, setProductList] = useState([]);
+  const params = useParams();
+  const proId = params.id;
+
   useEffect(() => {
-    fetch(`${BASE_URL}/projects/4`, {
+    fetch(`${BASE_URL}/projects/${proId}`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -13,6 +17,9 @@ const GiftinforComponent = () => {
         setProductList(data);
       });
   }, []);
+
+  console.log(productList);
+
   return (
     <Giftinformation>
       <Gifttitle>
