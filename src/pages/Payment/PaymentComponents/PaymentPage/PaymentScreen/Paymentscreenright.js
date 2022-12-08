@@ -6,7 +6,7 @@ const Paymentscreenright = ({ payCheckValue }) => {
   const [productList, setProductList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
-    fetch(`http://10.58.52.97:3000/projects/${searchParams.toString()}`, {
+    fetch(`http://10.58.52.97:3000/projects/4`, {
       method: 'GET',
     })
       .then(res => res.json())
@@ -21,7 +21,7 @@ const Paymentscreenright = ({ payCheckValue }) => {
         // 결제 수단
         // 결제 정보
         amount: `${productList.gift}`,
-        orderId: localStorage.getItem('token'),
+        orderId: 'oQxyUd0g-uvLwuS6lalcq',
         orderName: `${productList.name}`,
         customerName: `${productList.creator_nickname}`,
         successUrl: 'http://localhost:3000/paymentsuccess',

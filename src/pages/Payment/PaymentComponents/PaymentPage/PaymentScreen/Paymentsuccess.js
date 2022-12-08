@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const Paymentsuccess = () => {
@@ -40,7 +40,7 @@ const Paymentsuccess = () => {
 
     let options = {
       method: 'POST',
-      url: 'http://10.58.52.249:3000/payments',
+      url: 'http://10.58.52.237:3000/payments',
       headers: {
         Authorization:
           'Basic dGVzdF9za19vZXFSR2dZTzFyNU1PcU1hTjRiclFuTjJFeWF6Og==',
@@ -66,6 +66,7 @@ const Paymentsuccess = () => {
   return (
     <>
       <div>결제에 성공하였습니다.</div>
+      <br />
 
       <Link to="/">홈으로</Link>
     </>
