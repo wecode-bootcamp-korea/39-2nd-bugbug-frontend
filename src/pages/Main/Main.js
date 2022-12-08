@@ -7,15 +7,11 @@ import { useEffect } from 'react';
 
 export default function Main() {
   const [productInfo, setProductInfo] = useState([]);
-
-  useEffect(() => {
-    fetch(`${BASE_URL}/projectId`, {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(result => setProductInfo([...productInfo, { result }]));
-  }, []);
   console.log(productInfo);
+
+  //window.location.reload();
+
+  useEffect(() => {}, [0]);
 
   useEffect(filterHandle, []);
 
