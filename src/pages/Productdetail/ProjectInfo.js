@@ -35,9 +35,6 @@ export default function ProductInfo() {
     navigate(`/payment/${id}`);
   };
 
-  console.log(productInfo.id);
-  console.log(proId);
-
   return (
     <ProjectContents key={id}>
       <ProjectContentsWrap>

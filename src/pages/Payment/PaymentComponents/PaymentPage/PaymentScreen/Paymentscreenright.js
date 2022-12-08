@@ -24,7 +24,6 @@ const Paymentscreenright = ({ payCheckValue }) => {
   const token = JSON.parse(localStorage.getItem('token'))
     .replaceAll('.', '')
     .substr(0, 50);
-  console.log(token.length);
 
   const REACT_APP_TOSS = `${process.env.REACT_APP_TOSS}`;
   const onclickHandler = paymentType =>

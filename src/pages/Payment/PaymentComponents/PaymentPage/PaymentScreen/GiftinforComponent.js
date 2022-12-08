@@ -18,8 +18,6 @@ const GiftinforComponent = () => {
       });
   }, []);
 
-  console.log(productList);
-
   return (
     <Giftinformation>
       <Gifttitle>

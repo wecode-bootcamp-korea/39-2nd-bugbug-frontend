@@ -18,7 +18,6 @@ const ProductComponent = () => {
         setProductList(data);
       });
   }, []);
-  console.log(productList);
   const today = new Date();
   let todayYear = today.getFullYear();
   let todayMonth = today.getMonth() + 1;
