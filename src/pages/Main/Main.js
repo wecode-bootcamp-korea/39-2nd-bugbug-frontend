@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductCard from './components/ProductCard/ProductCard';
+import { BASE_URL } from '../../config';
 
 export default function Main() {
   const [productInfo, setProductInfo] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const setSortParams = () => {
-    searchParams.set('type', '1');
-    setSearchParams(searchParams);
-  };
 
   function filterHandle(category) {
-    console.log(category);
-    fetch(`http://10.58.52.231:3000/projects?type=${category}`, {
+    fetch(`${BASE_URL}/projects?type=${category}`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -25,7 +19,6 @@ export default function Main() {
     <MainContainer>
       <NavWrap>
         <NavItemWrap>
-          <button onClick={setSortParams}>setSortParams</button>
           <Link to="/">
             <NavItem>
               <img src="./images/main/icon-all.png" />

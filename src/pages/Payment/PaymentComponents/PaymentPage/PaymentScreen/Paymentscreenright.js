@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import { useSearchParams } from 'react-router-dom';
+import { BASE_URL } from '../../../../../config';
+
 const Paymentscreenright = ({ payCheckValue }) => {
   const [productList, setProductList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
-    fetch(`http://10.58.52.97:3000/projects/${searchParams.toString()}`, {
+    fetch(`${BASE_URL}/projects/${searchParams.toString()}`, {
       method: 'GET',
     })
       .then(res => res.json())

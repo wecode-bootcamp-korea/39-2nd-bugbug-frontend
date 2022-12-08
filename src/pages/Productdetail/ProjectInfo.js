@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { BASE_URL } from '../../config';
 
 export default function ProductInfo() {
   const [productInfo, setProductInfo] = useState([]);
 
   useEffect(() => {
-    fetch(`http://10.58.52.97:3000/projects/1`)
+    fetch(`${BASE_URL}/projects/1`)
       .then(response => response.json())
       .then(result => setProductInfo(result));
   }, []);
@@ -17,7 +18,7 @@ export default function ProductInfo() {
   if (productInfo.length === 0) return null;
 
   const sendItem = id => {
-    fetch(`http://10.58.52.219:3000/projects/1`, {
+    fetch(`${BASE_URL}/projects/1`, {
       method: 'POST',
       headers: {
         'content-Type': 'application/json;charset=utf-8',
@@ -27,7 +28,6 @@ export default function ProductInfo() {
     }).then(response => response.json());
   };
 
-  console.log(productInfo);
   return (
     <ProjectContents key={id}>
       <ProjectContentsWrap>

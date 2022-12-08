@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { BASE_URL } from '../../config';
 
 export default function Header() {
   // 로그인 상태
@@ -16,14 +17,13 @@ export default function Header() {
 
   useEffect(() => {
     if (isLogin) {
-      fetch(`http://10.58.52.97:3000/user/info`, {
+      fetch(`${BASE_URL}/user/info`, {
         headers: {
           authorization: isLogin,
         },
       })
         .then(response => response.json())
         .then(result => {
-          console.log(result);
           setLoginId(result);
         });
     }

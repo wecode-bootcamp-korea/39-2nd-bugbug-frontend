@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { BASE_URL } from '../../../../../config';
 
 const GiftinforComponent = () => {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
-    fetch(`http://10.58.52.97:3000/projects/4`, {
+    fetch(`${BASE_URL}/projects/4`, {
       method: 'GET',
     })
       .then(res => res.json())

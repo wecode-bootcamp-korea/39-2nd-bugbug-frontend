@@ -12,8 +12,6 @@ const Paymentscreenleft = () => {
     setPayCheck(param);
   }
 
-  // console.log(payCheck);
-
   return (
     <LeftContainer>
       <GiftinforComponent />

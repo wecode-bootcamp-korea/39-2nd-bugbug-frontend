@@ -19,8 +19,6 @@ export default function ProductCard({
     (Math.floor(gathered_amount) / Math.floor(target_amount)) * 100
   );
 
-  console.log(percent);
-
   const today = new Date();
 
   let todayYear = today.getFullYear();

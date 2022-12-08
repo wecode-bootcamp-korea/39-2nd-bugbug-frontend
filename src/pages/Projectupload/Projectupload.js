@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PROJECT_UPLAOD_LIST } from './ProjectUploadListData';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../config';
 
 export default function Projectupload() {
   const [imgPreveiw, setImgPreveiw] = useState(null);
@@ -39,9 +40,8 @@ export default function Projectupload() {
     formData.append('targetValue', JSON.stringify(targetValue));
 
     const accessToken = localStorage.getItem('token');
-    console.log('test');
 
-    fetch(`http://10.58.52.97:3000/projects`, {
+    fetch(`${BASE_URL}/projects`, {
       method: 'POST',
       headers: {
         //'Content-Type': 'application/json',
