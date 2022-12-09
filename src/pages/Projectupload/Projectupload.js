@@ -52,7 +52,7 @@ export default function Projectupload() {
       },
       body: formData,
     });
-
+    //window.location.replace('/');
     navigate('/');
   }
 
