@@ -1,4 +1,8 @@
 # 사지말고 후원하세요 BugBug
+
+https://user-images.githubusercontent.com/98885221/206909351-6cd7d070-39db-4aff-b1a1-b0a23413bdcb.mp4
+
+---
 * 프로젝트 사이트: 텀블벅
 * 구매목적이 아닌 후원위주의 웹페이지
 * 창작자에 의한 창작자를 위한 웹페이지
