@@ -1,5 +1,6 @@
 # 사지말고 후원하세요 BugBug
 
+https://user-images.githubusercontent.com/98885221/206911710-62e981a8-c7f0-4b42-9199-7a2dae33c1ee.mp4
 
 
 ---
