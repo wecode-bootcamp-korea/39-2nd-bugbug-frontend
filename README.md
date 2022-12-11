@@ -9,8 +9,6 @@ https://user-images.githubusercontent.com/98885221/206909351-6cd7d070-39db-4aff-
 
 ## BugBug 팀원
 
-​
-
 - F.E<br>
   박문영(PM)<br>
   송아영<br>
@@ -20,45 +18,12 @@ https://user-images.githubusercontent.com/98885221/206909351-6cd7d070-39db-4aff-
 - B.E<br>
   김세호<br>
   서재선<br>
-  ​
 
 ---
-
-​
-
-### 개발 인원 및 기간
-
-​
-
-- 개발 기간 : 2022/11/28 ~ 2022/12/09
-- 개발 인원 : F.E 4명, B.E 2명
-  ​
-
----
-
-​
-
-### 프로젝트 선정 이유
-
-​
-<br>
-​
-
-## 적용 기술 및 구현 기능
-
-​
 
 ### 적용 기술
 
-​
-
-> - Front_End : <br>
-> - Back_End : <br>
-> - Common :
->   ​
->   <br>
->   ​
-
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 ### 구현 기능
 
 ​
