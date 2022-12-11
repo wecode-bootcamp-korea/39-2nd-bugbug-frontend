@@ -1,6 +1,6 @@
 # 사지말고 후원하세요 BugBug
 
-https://user-images.githubusercontent.com/98885221/206909351-6cd7d070-39db-4aff-b1a1-b0a23413bdcb.mp4
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/98885221/206910311-dc4e0afa-3d41-4365-b543-5cf2932da1d8.gif)
 
 ---
 * 프로젝트 사이트: 텀블벅
