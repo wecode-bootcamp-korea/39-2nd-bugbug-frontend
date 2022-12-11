@@ -1,6 +1,4 @@
-# BugBug (Tumblbug을 모델링 한 프로젝트)
-
-​
+# 사지말고 후원하세요 BugBug
 
 ## BugBug 팀원
 
