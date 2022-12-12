@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 import { BASE_URL } from '../../../../config';
 
 const ProductComponent = () => {
   const [productList, setProductList] = useState([]);
+
+  const params = useParams();
+  const proId = params.id;
+
   useEffect(() => {
-    fetch(`${BASE_URL}/projects/4`, {
+    fetch(`${BASE_URL}/projects/${proId}`, {
       method: 'GET',
     })
       .then(res => res.json())

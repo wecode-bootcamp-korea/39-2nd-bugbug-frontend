@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { BASE_URL } from '../../config';
 
 export default function ProductInfo() {
   const [productInfo, setProductInfo] = useState([]);
+  const params = useParams();
+  const proId = params.id;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/projects/1`)
+    fetch(`${BASE_URL}/projects/${proId}`)
       .then(response => response.json())
       .then(result => setProductInfo(result));
   }, []);
@@ -18,7 +22,7 @@ export default function ProductInfo() {
   if (productInfo.length === 0) return null;
 
   const sendItem = id => {
-    fetch(`${BASE_URL}/projects/1`, {
+    fetch(`${BASE_URL}/projects/${proId}`, {
       method: 'POST',
       headers: {
         'content-Type': 'application/json;charset=utf-8',
@@ -26,6 +30,9 @@ export default function ProductInfo() {
       },
       body: JSON.stringify({ id: id }),
     }).then(response => response.json());
+
+    //navi
+    navigate(`/payment/${id}`);
   };
 
   return (
@@ -45,11 +52,18 @@ export default function ProductInfo() {
           <GiftCard>
             <GiftPrice>{Math.floor(gift).toLocaleString()}원 +</GiftPrice>
             <GiftDesc>{gift_information}</GiftDesc>
-            <Link to={`/payment/${id}`}>
+            {/* <Link to={`/payment/${id}`}>
               <PrimaryBtn onClick={sendItem(productInfo.id)}>
                 {Math.floor(gift).toLocaleString()}원 후원하기
               </PrimaryBtn>
-            </Link>
+            </Link> */}
+            <PrimaryBtn
+              onClick={() => {
+                sendItem(productInfo.id);
+              }}
+            >
+              {Math.floor(gift).toLocaleString()}원 후원하기
+            </PrimaryBtn>
           </GiftCard>
         </SubColumn>
       </ProjectContentsWrap>

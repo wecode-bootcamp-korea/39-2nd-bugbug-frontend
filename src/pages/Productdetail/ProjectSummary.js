@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { BASE_URL } from '../../config';
 
 export default function ProjectSummary() {
   const [productInfo, setProductInfo] = useState([]);
 
+  const params = useParams(); // 1
+  const proId = params.id; // 2
+
   useEffect(() => {
-    fetch(`${BASE_URL}/projects/1`)
+    fetch(`${BASE_URL}/projects/${proId}`)
       .then(response => response.json())
       .then(result => setProductInfo(result));
   }, []);

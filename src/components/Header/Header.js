@@ -6,6 +6,7 @@ import { BASE_URL } from '../../config';
 export default function Header() {
   // 로그인 상태
   const isLogin = JSON.parse(localStorage.getItem('token'));
+  //const isLogin = localStorage.getItem('token');
   const navigate = useNavigate();
 
   const [loginId, setLoginId] = useState('');

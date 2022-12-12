@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
-import { useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BASE_URL } from '../../../../../config';
 
 const Paymentscreenright = ({ payCheckValue }) => {
   const [productList, setProductList] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  //const [searchParams, setSearchParams] = useSearchParams();
+
+  const params = useParams();
+  const proId = params.id;
+
   useEffect(() => {
-    fetch(`${BASE_URL}/projects/${searchParams.toString()}`, {
+    fetch(`${BASE_URL}/projects/${proId}`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(data => {
         setProductList(data);
       });
-  }, [searchParams.toString()]);
+  }, [proId]);
+
+  const token = JSON.parse(localStorage.getItem('token'))
+    .replaceAll('.', '')
+    .substr(0, 50);
+
   const REACT_APP_TOSS = `${process.env.REACT_APP_TOSS}`;
   const onclickHandler = paymentType =>
     loadTossPayments(REACT_APP_TOSS).then(tossPayments => {
@@ -23,7 +32,8 @@ const Paymentscreenright = ({ payCheckValue }) => {
         // 결제 수단
         // 결제 정보
         amount: `${productList.gift}`,
-        orderId: localStorage.getItem('token'),
+        //orderId: localStorage.getItem('token'),
+        orderId: token,
         orderName: `${productList.name}`,
         customerName: `${productList.creator_nickname}`,
         successUrl: 'http://localhost:3000/paymentsuccess',

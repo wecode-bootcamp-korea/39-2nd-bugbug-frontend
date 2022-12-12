@@ -9,14 +9,14 @@ export default function ProductCard({
   creator_nickname,
   name,
   summary,
-  gathered_amount,
+  gatheredAmount,
   deadline,
   target_amount,
 }) {
   if (!id) return null;
 
   const percent = Math.floor(
-    (Math.floor(gathered_amount) / Math.floor(target_amount)) * 100
+    (Math.floor(gatheredAmount) / Math.floor(target_amount)) * 100
   );
 
   const today = new Date();
@@ -63,7 +63,7 @@ export default function ProductCard({
             <div>
               <Percent>{percent}%</Percent>
               <AllPrice>
-                {Math.floor(gathered_amount).toLocaleString()}원
+                {Math.floor(gatheredAmount).toLocaleString()}원
               </AllPrice>
             </div>
             <Dday>{getDateDiff(todayString, deadline)}일 남음</Dday>
