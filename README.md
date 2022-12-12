@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/98885221/206911710-62e981a8-c7f0-4b42-
 ## BugBug 팀원
 
 - F.E<br>
-  박문영(PM)<br>
+  [박문영(PM)](https://github.com/myp880)<br>
   송아영<br>
   우석민<br>
   조형진<br>
