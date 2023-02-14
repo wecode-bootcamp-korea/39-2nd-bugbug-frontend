@@ -1,27 +1,27 @@
-# 사지말고 후원하세요 BugBug
+# BugBug
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/98885221/218706898-73a6c27d-6904-45d7-b5fe-8ea282987d4c.gif)
 
-# 프로젝트 취지 및 소개
-
+## 프로젝트 취지 및 소개
+* 개발 기간 : 2022.11.28~ 12.09
 * 프로젝트 사이트: 텀블벅
 * 세상에 없던 크라우드펀딩 서비스
 * 창작자와 후원자가 소통하는 서비스
   * 창작자가 상품을 올리면 후원자는 상품에 후원 할수있습니다.
   * 상품은 일정 기간 목표한 금액을 채우면 후원자는 상품을 받을수 있습니다.
 
-## BugBug 팀원 및 구현페이지
+## 팀원
+ 📌 FE
+* 🙆‍♂️ [박문영(PM)](https://github.com/myp880) : 헤더,푸터,프로젝트 올리기 페이지
+* 🙆‍♂️ [조형진](https://github.com/gowell032) : 로그인 페이지
+* 🙆‍♂️ [우석민](https://github.com/Loman3710) : 결제 페이지
+* 🙆‍♀️ [김아영](https://github.com/re-cosmos) : 메인 리스트, 상세페이지
 
-- F.E<br>
-  [박문영(PM)](https://github.com/myp880) 헤더,푸터,프로젝트 올리기<br>
-  [송아영](https://github.com/re-cosmos) 메인 리스트, 상세페이지<br>
-  [우석민](https://github.com/Loman3710) 결제 페이지<br>
-  [조형진](https://github.com/gowell032) 로그인 페이지<br>
-  <br>
-- B.E<br>
-  [김세호](https://github.com/hosose)<br>
-  [서재선](https://github.com/IgnacioSEO)<br>
+📌 BE
+* 🙆‍♂️ [김세호](https://github.com/hosose)
+* 🙆‍♂️ [서재선](https://github.com/IgnacioSEO)
 
----
+## 구현 페이지
+
 
 ### 적용 기술
 
