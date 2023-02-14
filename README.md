@@ -1,5 +1,5 @@
 # BugBug
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/98885221/218706898-73a6c27d-6904-45d7-b5fe-8ea282987d4c.gif)
+
 
 ## 프로젝트 취지 및 소개
 * 개발 기간 : 2022.11.28~ 12.09
@@ -21,7 +21,11 @@
 * 🙆‍♂️ [서재선](https://github.com/IgnacioSEO)
 
 ## 구현 페이지
+
 ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/98885221/218720011-bc690e7a-224f-47d3-9249-22b09486173f.gif)
+
+![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/98885221/218721588-3572ed30-e099-4a0d-87d2-d0dcc6257dfa.gif)
+
 
 ### 적용 기술
 
