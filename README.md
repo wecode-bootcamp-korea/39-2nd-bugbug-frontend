@@ -1,12 +1,13 @@
 # 사지말고 후원하세요 BugBug
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/98885221/218706898-73a6c27d-6904-45d7-b5fe-8ea282987d4c.gif)
 
-https://user-images.githubusercontent.com/98885221/206911710-62e981a8-c7f0-4b42-9199-7a2dae33c1ee.mp4
+# 프로젝트 취지 및 소개
 
-
----
 * 프로젝트 사이트: 텀블벅
 * 세상에 없던 크라우드펀딩 서비스
 * 창작자와 후원자가 소통하는 서비스
+  * 창작자가 상품을 올리면 후원자는 상품에 후원 할수있습니다.
+  * 상품은 일정 기간 목표한 금액을 채우면 후원자는 상품을 받을수 있습니다.
 
 ## BugBug 팀원 및 구현페이지
 
