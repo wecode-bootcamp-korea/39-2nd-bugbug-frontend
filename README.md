@@ -21,9 +21,15 @@
 * 🙆‍♂️ [서재선](https://github.com/IgnacioSEO)
 
 ## 구현 페이지
-
+#### 로그인 페이지
 ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/98885221/218720011-bc690e7a-224f-47d3-9249-22b09486173f.gif)
-
+#### 메인 페이지
+![ezgif com-video-to-gif (6)](https://user-images.githubusercontent.com/98885221/218949595-e10916d1-657d-463e-828e-3bf76997a810.gif)
+#### 프로젝트 업로드 페이지
+![ezgif com-video-to-gif (3)](https://user-images.githubusercontent.com/98885221/218948176-12247633-4831-444e-b8a0-597cd479a7d4.gif)
+#### 상세 페이지
+![ezgif com-video-to-gif (5)](https://user-images.githubusercontent.com/98885221/218948600-a0789c04-854e-486b-8e7c-4e46c7b0179d.gif)
+#### 결제 페이지
 ![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/98885221/218721588-3572ed30-e099-4a0d-87d2-d0dcc6257dfa.gif)
 
 
