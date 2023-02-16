@@ -20,6 +20,8 @@
 * 🙆‍♂️ [김세호](https://github.com/hosose)
 * 🙆‍♂️ [서재선](https://github.com/IgnacioSEO)
 
+## 데모 영상
+https://drive.google.com/file/d/1ynOFv0evMI0GaN7_YOXVy6YP4jS0iIhi/view?usp=sharing
 ## 구현 페이지
 #### 로그인 페이지
 ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/98885221/218720011-bc690e7a-224f-47d3-9249-22b09486173f.gif)
@@ -32,6 +34,7 @@
 #### 결제 페이지
 ![ezgif com-video-to-gif (2)](https://user-images.githubusercontent.com/98885221/218721588-3572ed30-e099-4a0d-87d2-d0dcc6257dfa.gif)
 
+##
 
 ### 적용 기술
 
